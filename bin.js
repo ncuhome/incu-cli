@@ -1,5 +1,5 @@
 import cac from 'cac'
-import { openUrl } from './dist/index.mjs'
+import { openUrl } from './dist/index.js'
 import kleur from 'kleur'
 
 const cli = cac('incu')
