@@ -1,0 +1,39 @@
+{
+  "name": "incu",
+  "version": "0.0.1",
+  "keywords": [
+    "iNCU",
+    "CLI",
+    "linking"
+  ],
+  "homepage": "https://github.com/ncuhome/incu-cli#readme",
+  "type": "module",
+  "repository": "ncuhome/incu-cli",
+  "license": "MIT",
+  "author": "ncuhome (https://github.com/ncuhome)",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": "bin.js",
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs",
+    "prepublishOnly": "npm run build",
+    "pub": "release-it"
+  },
+  "dependencies": {
+    "cac": "^6.7.12",
+    "execa": "^6.1.0",
+    "kleur": "^4.1.5",
+    "update-notifier": "5.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.7.3",
+    "release-it": "15.3.0",
+    "tslib": "^2.4.0",
+    "tsup": "6.2.2",
+    "typescript": "4.7.4"
+  },
+  "engines": {
+    "node": ">=12"
+  }
+}
