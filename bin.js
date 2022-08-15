@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import cac from 'cac'
 import { openUrl } from './dist/index.js'
 import kleur from 'kleur'
@@ -51,7 +53,7 @@ const main = async () => {
     if (onlyAndroid) {
       const ok = await openUrl(url, 'android')
       result([
-        { name: 'Android', ok}
+        { name: 'Android', ok }
       ])
     }
     if (onlyIos) {
