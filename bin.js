@@ -3,6 +3,7 @@
 import cac from 'cac'
 import { openUrl } from './dist/index.js'
 import kleur from 'kleur'
+import { execSync } from 'child_process'
 
 const cli = cac('incu')
 
@@ -21,12 +22,24 @@ const parsed = cli.parse()
 
 const { args, h, onlyAndroid, onlyIos } = parsed
 
+const reversePort = (port) => {
+  execSync(`adb reverse tcp:${port} tcp:${port}`, {
+    stdio: 'inherit'
+  })
+}
+
 const main = async () => {
   if (h) {
     return
   }
 
-  const url = args[0]
+  let url = args[0]
+  const isPort = !Number.isNaN(Number(url))
+
+  if (isPort) {
+    reversePort(url)
+    url = `http://localhost:${url}`
+  }
 
   const result = (platforms) => {
     console.log(`Open ${kleur.blue().underline(url)} in iNCU\n`)
